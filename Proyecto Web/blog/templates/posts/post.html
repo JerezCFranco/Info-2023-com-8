@@ -28,16 +28,18 @@
           </ul>
         </div>
         </nav>
-
+  {% if posts %}
     {% for i in posts %}
 
         
 
         <section class="page-section clearfix" style="margin-bottom: 15%;color: white;">
-            <div class="container">
+            <div class="container-fluid">
               <div class="intro">
-                <img class="intro-alter-img img-fluid mb-3 mb-lg-0 rounded" src="{{i.imagen.url}}" alt="" style="width: 45%;">
-                <div class="intro-text left-0 text-center bg-faded p-5 rounded" style="margin-left: 600px; margin-top: 0.1px;">
+                <a href="{% url 'apps.posts:post_individual' i.id %}">
+                  <img class="intro-alter-img img-fluid mb-3 mb-lg-0 rounded" src="{{i.imagen.url}}" alt="" style="width: 45%;">
+                </a>
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded" style="margin-left: 800px; margin-top: 0.1px;">
                   <h2 class="section-heading mb-4" >
                     <span style="color: bisque;" class="section-heading-upper">{{i.titulo}}</span>
                     <span class="section-heading-lower">{{i.subtitulo}}</span>
@@ -55,10 +57,11 @@
               </div>
             </div>
           </section>
-    {% empty %}
-        <h1>No hay registros</h1>
 
     {% endfor%}
+{% else %}
+ <h1>No hay registros</h1>
+{% endif %}
   </center>
 </div>
 {% endblock%}
