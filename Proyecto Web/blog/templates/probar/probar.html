@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Inicio{% endblock %}
+{% block title %}Probar{% endblock %}
 {% block content%}
 <center>
 <section class="page-section clearfix" style="margin-top: 150px;">
@@ -10,6 +10,11 @@
                 <div class="col-md-1">
 
                 </div>
+                
+                <div class="col-md-4">
+                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/inicio.png' %}" alt="">
+                </div>
+
                 <div class="col-md-6" style="margin-bottom: 100px;">
                     <div class="intro-relative-text text-center bg-faded-blue p-5 rounded" style="height: 120%;">
                         <h2 class="section-heading mb-4" >
@@ -21,13 +26,7 @@
                           <p class="mb-3" style="color: bisque;font-size: 22px;">Esta página es presentada por el grupo: Grupo.isEmpty().</p>
                       </div>
                 </div>
-                <div class="col-md-1">
 
-                </div>
-                <div class="col-md-4">
-                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/inicio.png' %}" alt="">
-                </div>
-                
             </div>
         </div>
     </div>

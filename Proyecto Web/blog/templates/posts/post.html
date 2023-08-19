@@ -36,24 +36,43 @@
         <section class="page-section clearfix" style="margin-bottom: 15%;color: white;">
             <div class="container-fluid">
               <div class="intro">
-                <a href="{% url 'apps.posts:post_individual' i.id %}">
-                  <img class="intro-alter-img img-fluid mb-3 mb-lg-0 rounded" src="{{i.imagen.url}}" alt="" style="width: 45%;">
-                </a>
-                <div class="intro-text left-0 text-center bg-faded p-5 rounded" style="margin-left: 800px; margin-top: 0.1px;">
-                  <h2 class="section-heading mb-4" >
-                    <span style="color: bisque;" class="section-heading-upper">{{i.titulo}}</span>
-                    <span class="section-heading-lower">{{i.subtitulo}}</span>
-                    <span class="section-heading-lower">{{i.contenido}}</span>
-                    <br>
-                    <a style="text-decoration: none;" href="{% url 'apps.posts:post_individual' i.id %}">Ingresá a este Post</a>
-                        
-                  </h2>
-                  <div style="text-align: left; font-size: 1em;">
-    
-                    <p style="margin-right: 50px; color: white; text-decoration: none;">Fecha de creación: {{i.publicado}}</p>
-    
+                <div class="row" style="color: white;">
+
+                  <div class="col-md-3">
+
                   </div>
+
+                  
+
+                  <div class="col-md-8">
+                    <a href="{% url 'apps.posts:post_individual' i.id %}">
+                      <img class="intro-alter-img img-fluid mb-3 mb-lg-0 rounded" src="{{i.imagen.url}}" alt="" style="width: 74.4%;">
+                    </a>
+                  </div>
+                  <div class="col-md-3">
+
+                  </div>
+                  
+                  <div class="col-md-6" style="text-align: center;">
+                    <div class="intro-relative-text text-center bg-faded-blue p-5 rounded">
+                      <h2 class="section-heading mb-4" >
+                        <span style="color: bisque;" class="section-heading-upper">{{i.titulo}}</span>
+                        <span class="section-heading-lower">{{i.subtitulo}}</span>
+                        <span class="section-heading-lower">{{i.contenido}}</span>
+                        <br>
+                        <a style="text-decoration: none;" href="{% url 'apps.posts:post_individual' i.id %}">Ingresá a este Post</a>
+                            
+                      </h2>
+                      <div style="text-align: left; font-size: 1em;">
+        
+                        <p style="margin-right: 50px; color: white; text-decoration: none;">Fecha de creación: {{i.publicado}}</p>
+        
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
+
               </div>
             </div>
           </section>

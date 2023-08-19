@@ -93,6 +93,10 @@ p {
   background-color: rgba(255, 255, 255, 0.851);
 }
 
+.bg-faded-blue {
+  background-color: rgba(25, 36, 64);
+}
+
 #mainNav {
   background-color: rgba(25, 36, 64);
   font-family: 'Raleway';
@@ -169,6 +173,12 @@ p {
     color: cornsilk;
     position: absolute;
   }
+
+  .intro .intro-relative-text {
+    background-color: rgba(25, 36, 64);
+    color: cornsilk;
+  }
+
   .intro .intro-alter-text{
     left: 600;
     width: 60%;
