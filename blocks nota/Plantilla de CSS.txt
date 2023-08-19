@@ -1,0 +1,41 @@
+*site-heading* # Coloca el texto en la parte superior central de la página, con una separacion entre el margen superior e inferior.
+*site-heading-upper* # El texto ingresado adopta un formato grande
+*site-heading-lower* # El texto ingresado adopta un formato pequeño
+
+*section-heading* # Todo el texto ingresado se convertira en mayusculas
+*section-heading-upper* # El texto ingresado adopta un formato grande
+*section-heading-lower* # El texto ingresado adopta un formato pequeño
+
+*id=mainNav* # Utilizado para darle una fuente de letra a el texto de la navbar, y ademas le coloca un fondo con color a esta
+*navbar* # Utilizado para crear una barra de navegación
+*navbar-dark* # Utilizado para generar un contraste entre el color de la barra y el fondo oscuro
+*navbar-expand* # La barra de navegación se adaptara según el tamaño de la pantalla, por ejemplo si el dispositivo se minimiza
+este se adaptara al tamaño
+*nav-link* # Aplica un formato de color a el texto, y tambien un tamaño determinado para su ancho
+
+*text-uppercase* #Para convertir en mayúsculas al texto
+
+*py-lg-4* # Se utiliza para aplicar un espaciado vertical de cuatro unidades a un elemento en dispositivos de tamaño grande
+*mx-auto* # Se utiliza para centrar horizontalmente un elemento dentro de su contenedor
+
+*page-section* # Coloca una separacion entre margen superior e inferior al texto ingresado
+*clearfix* # Se garantiza que el contenedor padre se ajuste correctamente a los elementos flotantes y 
+evita problemas de superposición o diseño incorrecto.
+
+*footer* # Colocara un color de fondo al texto
+*text-faded* # Le dara un formato de color diferente al texto
+
+*py-5* # Utilizado para centrar el texto con una separacion entre margenes y darle cierto margen contenedor al texto
+*m-0* # Utilizado para dejar en margin 0 en todas las direcciones al elemento
+
+*mbt* # Aplica un padding superior
+*mbt1* # Aplica un padding superior un poco menor al anterior
+
+*intro* # Asignara un espacio relativo para el elemento
+*intro-img* # Asignara un ancho del 75% a la imagen, y la ubicara a la izquierda
+*intro-text* #Asignara el texto a la derecha, con un ancho determinado del 60%, le colocara un
+fondo con color, y asiganara un color al texto, la posicion es absoluta
+*intro-button* # El ancho sera del 100%
+*bg-faded* # Le asignara un color al formato de letra
+*rounded* # Para redondear los bordes
+

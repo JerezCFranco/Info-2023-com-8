@@ -1,0 +1,325 @@
+#base#
+
+<html lang="en">
+
+
+
+<head>
+  
+  {% load static %}
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <link href="{% static 'css/gestion.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    
+    <span class="site-heading-upper">Informatorio</span>
+  
+  </h1>
+
+  <div style="text-align: right; margin-right: 100px; color: white;">
+        
+
+    Hola  &nbsp; &nbsp; <a href="#" style="color: white;">Cerrar Sesión</a>
+
+
+    <a href="#" style="color: white;">Login</a> &nbsp; &nbsp; <a href="#" style="color: white;">Regístrate</a>
+
+
+  
+  
+  </div>
+
+    <!-- place navbar here -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <ul class="navbar-nav mx-auto">
+            <li><a class="nav-link text-uppercase text-expanded" style="padding-left: 10px;" href="{% url 'Inicio' %}" id="nav-link">Inicio</a></li>
+            <li><a class="nav-link text-uppercase text-expanded" style="padding-left: 10px;" href="{% url 'Categorias' %}" id="nav-link">Categorias</a></li>
+            <li><a class="nav-link text-uppercase text-expanded" style="padding-left: 10px;" href="{% url 'Contacto' %}" id="nav-link">Contacto</a></li>
+            <li><a class="nav-link text-uppercase text-expanded" style="padding-left: 10px;" href="{% url 'About' %}" id="nav-link">Acerca de</a></li>
+        </ul>      
+      </div> 
+    </nav>
+
+    
+  {% block content %}
+
+
+  {% endblock %}
+
+    <!-- place footer here -->
+  <footer class="footer text-faded text-center py-5">
+    <div class="container">
+      <p class="m-0 mbt">
+        <a class="link">Política de privacidad</a> ·
+        <a class="link">Aviso legal</a>
+      </p>
+      <p class="m-0 mbt1">&copy; Informatorio 2023</p>
+    </div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
+
+<section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'ProyectoWebApp/img/principal.jpg' %}" alt="">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-upper">Puntualidad</span>
+            <span class="section-heading-lower">El mejor stock</span>
+          </h2>
+          <p class="mb-3">En la puertra de tu casa en menos de 48 h con el envío normal. En menos de 24 h con el envío express.
+          </p>
+         
+        </div> 
+      </div>
+    </div>
+  </section>
+
+#inicio/index#
+
+{% extends 'inicio/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <title>Inicio</title>
+
+    {% for post in posts %}
+
+    <section class="page-section clearfix"  style="margin-bottom: 10%;">
+        <div class="container">
+          <div class="intro">
+            <img class="intro-alter-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 45%; margin-bottom: 40;">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-upper">{{post.titulo}}</span>
+                <span class="section-heading-lower">{{post.resumen}}</span>
+              </h2>
+              <div style="text-align: left; font-size: 1em;">
+
+                <p class="section-heading-upper" style="margin-right: 50px;">Autor del Post: {{post.autor}}</p>
+                <p class="section-heading-upper" style="margin-right: 50px;">Fecha de creación: {{post.created}}</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+    {% endfor %}
+
+    <section>
+        <div style="width: 75%; margin: auto; text-align: center; color: white;">
+        
+            Categorías:
+
+            {% for post in posts %}
+
+              {% for categoria in post.categorias.all %}
+
+                <a href="{% url 'categoria' categoria.id %}" class="linksCategorias">{{categoria.nombre}}</a> &nbsp;&nbsp;&nbsp;
+
+              {% endfor %}
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+{% endblock %}
+
+
+#categoria#
+
+{% extends 'inicio/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    {% for post in posts %}
+    <title>Categorías</title>
+    <section class="page-section clearfix" style="margin-bottom: 30%;">
+        <div class="container">
+          <div class="intro">
+            <img class="intro-alter-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="" style="width: 45%;">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-upper">{{post.titulo}}</span>
+                <span class="section-heading-lower">{{post.contenido}}</span>
+
+              </h2>
+              <div style="text-align: left; font-size: 1em;">
+
+                <p class="section-heading-upper" style="margin-right: 50px;">Autor del Post: {{post.autor}}</p>
+                <p class="section-heading-upper" style="margin-right: 50px;">Fecha de creación: {{post.created}}</p>
+                <a name="" id="" class="btn btn-danger" href="http://127.0.0.1:8000/admin/inicio/post/" role="button">Agregar, modificar o eliminar un post</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+    {% endfor %}
+
+    <section>
+        <div style="width: 75%; margin: auto; text-align: center; color: white;">
+        
+            Categorías:
+
+            {% for post in posts %}
+
+              {% for categoria in post.categorias.all %}
+
+                {{categoria.nombre}} &nbsp;&nbsp;&nbsp;
+
+              {% endfor %}
+
+            {% endfor %}
+
+
+        </div>
+
+    </section>
+
+{% endblock %}
+
+
+#categorias#
+
+{% extends 'inicio/base.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<title>Categorías</title>
+
+<section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="image-container intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/deporte.jpg' %}" alt="" style="width: 50%;">
+        <div class="intro-alterb-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <a class="section-heading-upper" href="/%2F1/">Sección de Deportes!</a>
+          </h2>
+          <div style="text-align: left; font-size: 1em;">
+            <p class="section-heading-upper" style="margin-right: 50px;">El deporte es todo tipo de actividades físicas que, mediante una participación, organizada o de otro tipo, tengan por finalidad la expresión o la mejora de la condición física, en desarrollo de las relaciones sociales o el logro de resultados en competiciones de todos los niveles.</p>
+            <p class="section-heading-upper" style="margin-right: 50px;">Por ejemplo: Fútbol, Basquetball, Tenis, Volleyball, Rugby, Padel, Natación, Etc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="image-container intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/noticias.jpg' %}" alt="" style="width: 50%;">
+        <div class="intro-alterb-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <a class="section-heading-upper" href="/%2F3/">Sección de Noticias!</a>
+          </h2>
+          <div style="text-align: left; font-size: 1em;">
+            <p class="section-heading-upper" style="margin-right: 50px;">Una noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo y difundido a través de los diversos medios de comunicación social.</p>
+            <p class="section-heading-upper" style="margin-right: 50px;">Pueden ser de diversos temas, por ejemplo: Políticas, Deportivas, Económicas, Culturales, Sociales, Policiales, Científicas, etc</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="image-container intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'img/economia.jpg' %}" alt="" style="width: 50%;">
+        <div class="intro-alterb-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <a class="section-heading-upper" href="/%2F4/">Sección de Economia!</a>
+          </h2>
+          <div style="text-align: left; font-size: 1em;">
+            <p class="section-heading-upper" style="margin-right: 50px;">Una noticia es un relato o escrito sobre un hecho actual y de interés público, es un texto objetivo y difundido a través de los diversos medios de comunicación social.</p>
+            <p class="section-heading-upper" style="margin-right: 50px;">Pueden ser de diversos temas, por ejemplo: Políticas, Deportivas, Económicas, Culturales, Sociales, Policiales, Científicas, etc</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  
+
+{% endblock %}
+
+
+#about#
+
+def categoria(request):
+
+    return render(request, 'categoria/categoria.html')
+
+def categorias(request):
+
+    return render(request, 'categoria/categorias.html')
+
+urlpatterns = [
+    path('', views.categoria, name='Categoria'),
+    path('categorias/', views.categorias, name='Categorias'),
+]
+
+{% extends 'inicio/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<title>Acerca de</title>
+<section class="page-section clearfix">
+  <div class="container">
+      <div class="intro">
+              <img class="intro-img img-fluid  mb-lg-0 rounded"  src="{% static 'img/Informatorio.jpg' %}" alt="" style="width: 40%; margin-left: 70px;">
+              <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                  <h2 class="section-heading mb-4" style="margin-top: -15px;">
+                      <span class="section-heading-lower">About</span>
+                      <span class="section-heading-upper">Acerca de la página</span>
+                  </h2>
+                  <div>
+                      <p class="mb-3" style="font-size: 18px;">La página es el Proyecto Final asignado a la Etapa 2 del Informatorio, esta página fue creada utilizando Visual Studio Code, Python, Django, biblioticas de Bootstrap y CSS.  </p>
+              </div>
+          </div>       
+      </div>
+  </div>
+</section>
+
+{% endblock %}

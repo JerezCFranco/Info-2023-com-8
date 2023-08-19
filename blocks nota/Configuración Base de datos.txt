@@ -1,0 +1,68 @@
+import os #importa operative system
+
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+from django.urls import path, include   #url.py del base
+path('servicios/', include('servicios.urls')),
+
+def tienda(request): #views.py
+
+    productos = Producto.objects.all()
+
+    return render(request, 'tienda/tienda.html', {"productos":productos})
+
+
+
+from django.urls import path
+
+from .import views
+
+
+urlpatterns = [ #urls.py
+
+    path('', views.tienda, name="Tienda"),
+    
+]
+
+urlpatterns = [ #urls.py del original
+    path('admin/', admin.site.urls),
+
+    path('servicios/', include('servicios.urls')),
+
+    path('blog/', include('blog.urls')),
+
+    path('contacto/', include('contacto.urls')),
+
+    path('autenticacion/', include('autenticacion.urls')),
+
+    path('tienda/', include('tienda.urls')),
+
+    path('carro/', include('carro.urls')),
+
+    path('pedidos/', include('pedidos.urls')),
+
+    path('', include('ProyectoWebApp.urls')),
+    
+
+]
+
+class CategoriaProd(models.Model): #models.py
+    nombre=models.CharField(max_length=50)
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name="CategoriaProd"
+        verbose_name_plural="CategoriasProd"
+
+    def __str__(self):
+        return self.nombre

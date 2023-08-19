@@ -1,0 +1,12 @@
+ermac444
+
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'corporeishioninfo',
+		'USER': 'corporeishion',
+		'PASSWORD': 'ermac444',
+		'HOST': 'corporeishion.mysql.pythonanywhere-services.com',
+		'PORT': '3306',
+	}
+}

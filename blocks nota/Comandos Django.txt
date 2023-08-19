@@ -1,0 +1,95 @@
+django-admin startproject "Ingrese el nombre del proyecto" #Creara una nueva carpeta para el proyecto nuevo, con el nombre asignado
+
+python manage.py startapp "nombre" #creara una aplicacion dentro del proyecto 
+
+python manage.py createsuperuser #para crear super usuario
+
+(en la carpeta creada)python manage.py migrate #Iniciara el proyecto y le asignara una base de datos sqlite3
+
+(en la carpeta creada)python manage.py runserver #Ejecutara el proyecto, siendo visible en la URL que este devuelve
+
+python manage.py makemigrations #crea un modelo para los archivos
+
+python manage.py sqlmigrate "nombre de la app" "numero de la app, dado por la migracion"
+
+python manage.py shell #activara la consola shell con el programa
+
+objeto=aplicacion( parametro = "valor que se le asignara" ) #para asignarle valores al objeto
+objeto.save() # para agregar a la base de datos el objeto
+
+otra opcion es
+
+objeto=aplicacion.objects.create(parametros="valor que se le asignara") #esto realizara las dos acciones anteriores en solo una
+
+objeto.parametro = nuevoparametro
+objeto.save() #asi se cambiarian los datos de un objeto ya guardado
+
+objeto=aplicacion.objects.get(parametro="valor asignado")
+objeto.delete() #esto borrara el objeto elegido de la base de datos
+
+lista=aplicacion.objects.all() #guardara en una lista todos los elementos de la aplicacion
+
+from "nombre de tu proyecto".models import "nombre de los objetos que quieres importar" #para poder llamarlos en la consola shell
+al usar base de datos
+
+aplicacion.objects.filter(parametro="valor) #esto para buscar archivos en la base de datos segun los valores asignados
+
+cuando un valor x se compara con un valor, por ejemplo x>valor se usa parametro__gte=valor
+ y para el valor x<valor parametro__lte=valor
+para valores medidos en un rango se utiliza, parametro__range(x,y) #x e y representaran los valores a querer analizar
+
+aplicacion.objects.filter(parametro="valor).order_by("valor por que se ordena")
+si es por precio lo ordenara de menor a mayor,
+
+para ordenar de mayor a menor order_by("-valor por que se ordena") se le agrega un signo menos al inicio
+
+
+
+    portada cache
+
+{% extends "portada/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+   <title>Portada</title>
+
+   <!-- Heading -->
+   <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'portada/img/principal.jpg' %}" alt="">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-upper">Informatorio</span>
+            <span class="section-heading-lower">Proyecto Final</span>
+          </h2>
+          <p class="mb-3">Bienvenido al blog!.</p>
+          <p class="mb-3">Explore libremente las pestañas del sítio.</p>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+    <!-- Message -->
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-4">
+                <span class="section-heading-upper">Proyecto en Django.</span>
+                <span class="section-heading-lower">Home del sítio</span>
+              </h2>
+              <p class="mb-0">Estamos agradecidos por su visita, espero sea de su agrado el sítio!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

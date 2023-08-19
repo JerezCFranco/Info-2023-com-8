@@ -1,0 +1,41 @@
+21a5c42 HEAD@{56}: commit (initial): Subiendo Proyecto Final, Desafio 13
+...skipping...
+b97b845
+apretar Q para salir de la consola de git
+
+rm -fr ".git/rebase-merge"
+git init #Inicia git
+
+git add . #Agrega todos los archivos de la carpeta seleccionada
+
+git status #Informa que archivos fueron subidos, y cuales no
+
+git commit -m "Un comentario sobre la subida" #Agrega un comentario a la subida
+
+git branch -M main #Elije la rama principal para subida
+
+git remote add origin "direccion" #esto en caso de que se quiera elegir a que repositorio subir el archivo
+
+git push -u origin main #Sube los archivos
+
+comandos a tener en cuenta git --rebase continue, git --rebase abort, y git --rebase skip
+
+class CategoriaProd(models.Model):
+    nombre=models.CharField(max_length=50)
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name="CategoriaProd"
+        verbose_name_plural="CategoriasProd"
+
+    def __str__(self):
+        return self.nombre
+
+from django.contrib.auth.models import User
+
+autor=models.ForeignKey(User, on_delete=models.CASCADE)
+
+categorias=models.ManyToManyField(Categoria)
+
+55

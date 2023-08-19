@@ -1,0 +1,23 @@
+primero, en settings se crea:
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+
+en la urls.py principal se incluye:
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+Lo primero es importar
+from django.conf.urls.static import static
+y luego
+from django.contrib.staticfiles.urls import
+staticfiles_urlpatterns
+
+las cuales van a servir para hacer las declaraciones:
++static(settings.STATIC_URL,
+document_root=settings.STATIC_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL,
+document_root=settings.MEDIA_ROOT)
